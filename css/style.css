@@ -1,0 +1,241 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* changes box model so that border and padding are no longer added to total width and total height specified for box */
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  /* properties related to font are usually inherited, so we do this in body instead of universal selector */
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box;
+}
+
+.header {
+  /* at every point, the height of this element should be 95% of the viewport height */
+  height: 95vh;
+  /* gradient has to be first so it stays on top of image */
+  background-image: linear-gradient(
+    to right bottom,
+   rgba(126, 213, 111, 0.8),
+   rgba(40, 180, 133, 0.80)),
+   url('../img/hero.jpg');
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  position: relative;
+}
+
+.header__logo-box {
+
+  /* Reference from where we begin to count from top and left is a parent element which has its position set to relative */
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+
+.header__logo {
+  /* Specify the height and the width will be automatically figured out by the browser. If you set width, height will be figured out by the browser, but controlling height is preferable. */
+  height: 3.5rem;
+}
+
+.header__text-box {
+  /* Best way to center box in the absolute center of our header? Absolute positioning. */
+
+  position: absolute;
+  /* 50% of the width/40% of the height of the parent element right and down from top, in relation to the parent element */
+
+  top: 40%;
+  left: 50%;
+
+  /* 50% of the width of the element left and up, in relation to the element itself */
+
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.heading-primary {
+  color: #FFF;
+  text-transform: uppercase;
+
+  /* Determines if the back part of an element when we transform it is visible or hidden for the user. */
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+}
+
+.heading-primary--main {
+  /* A span element by default is an inline element just like text. */
+
+  /* Block-level elements occupy the entire width they have available, and more importantly they create line breaks before and after. */
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  /* animation-delay: 3s;
+  animation-iteration-count: 3; */
+  animation-timing-function: ease-out;
+
+}
+
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.75rem;
+
+  /* Animation shorthand */
+  animation: moveInRight 1s ease-out;
+}
+
+/* Two types of animations in CSS.
+   1) Transition properties. Change properties you want to animate on an event.
+   2) Keyframe animations.
+*/
+
+/* For browser performance, it's best to only animate two different properties. One is opacity and the other is the transform property. */
+
+/* For an animation to work, there are two properties we need to specify: animation name and animation duration. We can also set: animation-delay, animation-iteration-count, animation-timing-function */
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  80%{
+    transform: translateX(1rem);
+  }
+
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+/* Pseudoclasses are a special state of a selector. */
+
+/* Link pseudoclass. Special state of a selector when it is an <a> element. Visited pseudoclass is the state of a link pseudoclass that has already been interacted with once. */
+
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  /* Inline-block treats an inline element as a box model. */
+  display: inline-block;
+  border-radius: 10rem;
+  transition: all .2s;
+  position: relative;
+  font-size: 1.6rem;
+}
+
+.btn:hover {
+  transform: translateY(-.3rem);
+  box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
+}
+
+.btn:active {
+
+  /* 1px up in relation to the link state, not the hover state. */
+
+  transform: translateY(-.1rem);
+
+  /* Shadow is less offset and less blurred to imitate being depressed. */
+
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
+
+}
+
+.btn--white {
+  background-color: #FFF;
+  color: #777;
+}
+
+/* Creates an element that looks exactly like the button we already have, but puts it behind the button. When we hover out of the button, this hidden pseudo-element goes back behind the button. */
+
+/* After pseudo-element basically treated as a child, so this is 100% the height and width of the parent button, not the button's parent element. */
+
+.btn::after {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+
+  /* Move item behind parent button by giving button relative position and negative z-index */
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s;
+
+}
+
+.btn--white::after {
+  background-color: #FFF;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn--animated {
+  animation: moveInBottom .5s ease-out .75s;
+
+  /* Automatically applies the styles of the 0% step before the animation starts. */
+
+  animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

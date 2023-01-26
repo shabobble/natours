@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+
+        <link rel="stylesheet" href="css/icon-font.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+        <title>Natours | Exciting tours for adventurous people</title>
+    </head>
+    <body>
+        <!-- The header is a block in the BEM system because it is a standalone component that is meaningful on its own. -->
+        <header class="header">
+            <!-- Because the image is an inline element, it's better practice to put the image inside a small container and then position the container to where we want the image to be. -->
+
+            <!-- This logo box and this logo with this exact size only exist in this header, so they are elements. -->
+
+            <div class="header__logo-box">
+                <img src="img/logo-white.png" alt="Logo" class='header__logo'>
+            </div>
+
+            <!-- H1 is the single most important heading on the page for SEO. -->
+            <div class="header__text-box">
+                <!-- Standalone block because this <h1> styling could be used elsewhere -->
+	            <h1 class="heading-primary">
+		            <span class="heading-primary--main">Outdoors</span>
+		            <span class="heading-primary--sub">is where life happens</span>
+	            </h1>
+
+                <a href="#" class="btn btn--white btn--animated">Discover our tours</a>
+            </div>
+        </header>
+    </body>
+</html>
