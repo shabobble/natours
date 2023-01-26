@@ -1,0 +1,52 @@
+/* Two types of animations in CSS.
+   1) Transition properties. Change properties you want to animate on an event.
+   2) Keyframe animations.
+*/
+
+/* For browser performance, it's best to only animate two different properties. One is opacity and the other is the transform property. */
+
+/* For an animation to work, there are two properties we need to specify: animation name and animation duration. We can also set: animation-delay, animation-iteration-count, animation-timing-function */
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

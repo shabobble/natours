@@ -1,0 +1,18 @@
+// Real low-level basics, such as resets and styles for the html and body element selectors.
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* changes box model so that border and padding are no longer added to total width and total height specified for box */
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}

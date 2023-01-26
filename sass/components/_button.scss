@@ -1,0 +1,77 @@
+/* Pseudoclasses are a special state of a selector. */
+
+/* Link pseudoclass. Special state of a selector when it is an <a> element. Visited pseudoclass is the state of a link pseudoclass that has already been interacted with once. */
+
+.btn {
+
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    /* Inline-block treats an inline element as a box model. */
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative;
+    font-size: 1.6rem;
+  }
+
+  &:hover {
+    transform: translateY(-.3rem);
+    box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  &:active {
+
+    /* 1px up in relation to the link state, not the hover state. */
+
+    transform: translateY(-.1rem);
+
+    /* Shadow is less offset and less blurred to imitate being depressed. */
+
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  /* Creates an element that looks exactly like the button we already have, but puts it behind the button. When we hover out of the button, this hidden pseudo-element goes back behind the button. */
+
+  /* After pseudo-element basically treated as a child, so this is 100% the height and width of the parent button, not the button's parent element. */
+
+  &::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+
+    /* Move item behind parent button by giving button relative position and negative z-index */
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+  }
+
+  &--animated {
+    animation: moveInBottom .5s ease-out .75s;
+
+    /* Automatically applies the styles of the 0% step before the animation starts. */
+
+    animation-fill-mode: backwards;
+  }
+}
