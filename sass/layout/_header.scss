@@ -9,8 +9,8 @@
   background-size: cover;
   background-position: top;
   position: relative;
-
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
   &__logo-box {
     /* Reference from where we begin to count from top and left is a parent element which has its position set to relative */

@@ -1,0 +1,46 @@
+.composition {
+    position: relative;
+
+    &__photo {
+
+        // Always define the widths of images in percentages if possible for flexible images. This way it will nicely scale with the viewport. Same also applies with left and right absolute positioning.
+
+        width: 55%;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+        position: absolute;
+        z-index: 10;
+        transition: all .2s;
+
+        &--p1 {
+            left: 0;
+            top: -2rem;
+        }
+
+        &--p2 {
+            right: 0;
+            top: 2rem;
+        }
+
+        &--p3 {
+            left: 20%;
+            top: 10rem;
+        }
+
+        &:hover {
+
+            // Outline is different from border due to outline offset property.
+            outline: 1.5rem solid $color-primary;
+            outline-offset: 2rem;
+
+            transform: scale(1.05) translateY(-.5rem);
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+            z-index: 20;
+
+        
+        }
+    }
+
+    &:hover &__photo:not(:hover) {
+        transform: scale(.9);
+    }
+}

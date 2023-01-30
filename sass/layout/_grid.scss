@@ -6,7 +6,6 @@
 
 .row {
   max-width: $grid-width;
-  background-color: #eee;
 
   // Trick to center one block element inside of another block element. Browser when rendering the page will automatically figure out the margin we want on left and right. Since we put auto, they will be the same, which will center the element.
   margin: 0 auto;
@@ -20,7 +19,6 @@
   // Attribute selector.
   // Will select all attributes where the class STARTS with 'col-'. *=: Contains, $=, Ends with.
   [class^="col-"] {
-    background-color: orangered;
     float: left;
 
     &:not(:last-child) {
