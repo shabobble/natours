@@ -3,7 +3,7 @@
 /* Link pseudoclass. Special state of a selector when it is an <a> element. Visited pseudoclass is the state of a link pseudoclass that has already been interacted with once. */
 
 .btn {
-
+  &,
   &:link,
   &:visited {
     text-transform: uppercase;
@@ -15,6 +15,10 @@
     transition: all .2s;
     position: relative;
     font-size: $default-font-size;
+
+    // Change for the <button> element
+    border: none;
+    cursor: pointer;
   }
 
   &:hover {
@@ -27,7 +31,10 @@
     }
   }
 
-  &:active {
+  &:active,
+  &:focus {
+
+    outline: none;
 
     /* 1px up in relation to the link state, not the hover state. */
 
@@ -44,6 +51,15 @@
 
     &::after {
       background-color: $color-white;
+    }
+  }
+
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &::after {
+      background-color: $color-primary;
     }
   }
 
